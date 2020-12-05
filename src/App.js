@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+//import logo from './logo.svg';
+import React from 'react';
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      desc: ''
+    };
+  }
+  render() {            
+    return (                
+      <div>
+        <button onClick={
+          ()=>{this.setState((state, props) => {
+              return {
+                name:'황성일',
+                desc:'React 학습에 오신걸 환영합니다.'
+              }
+            });
+          }}>클릭
+        </button>        
+        <h1>안녕하세요! {this.state.name}님!</h1>        
+        <div className="div">{this.state.desc}</div>
+      </div >
+   
+    );
+  }
 }
 
 export default App;

@@ -11,3 +11,7 @@
 .ContactsList > div:hover {
   background: #eee
 }
+.Title a {
+  text-decoration: none;
+  color: #000;
+}

@@ -31,9 +31,7 @@ class Contact extends React.Component {
   handleClick(key) {
     this.setState({     
       selectedKey: key     
-    });
-
-    console.log(key, '선택완료');
+    });   
   }
 
   render() {
@@ -56,7 +54,9 @@ class Contact extends React.Component {
     
     return (
       <div>
-          <h1 className="Title">Contacts</h1>
+          <h1 className="Title">
+            <a href="http://localhost:3000">Contacts</a>
+          </h1>
           <input
             className="Keyword"
             name="keyword"

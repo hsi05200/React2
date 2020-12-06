@@ -1,11 +1,14 @@
 import React from 'react';
 import ContactInfo from './Contactinfo';
+import ContactDetails from './ContactDetails';
+import './css/Contact.css';
 
 class Contact extends React.Component {
     
   constructor(props) {
     super(props);
     this.state = {
+      selectedKey: -1,
       keyword: '',
       contactData: [
         {name: 'Abet', phone: '010-0000-0001'},
@@ -16,12 +19,21 @@ class Contact extends React.Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleChange(e) {
     this.setState({
       keyword: e.target.value
     });
+  }
+
+  handleClick(key) {
+    this.setState({     
+      selectedKey: key     
+    });
+
+    console.log(key, '선택완료');
   }
 
   render() {
@@ -34,23 +46,39 @@ class Contact extends React.Component {
         }
       )
       return data.map((contact, i) => {
-          return (<ContactInfo contact={contact} key={i}/>);
+          return (<ContactInfo
+                    contact={contact}
+                    key={i}
+                    onClick={() => this.handleClick(i)}
+                  />);
       });
     };
     
     return (
       <div>
-          <h1>Contacts</h1>
+          <h1 className="Title">Contacts</h1>
           <input
+            className="Keyword"
             name="keyword"
             placeholder="검색"
             value={this.state.keyword}
             onChange={this.handleChange}
           />
-          <div>{mapToComponents(this.state.contactData)}</div>
+          <div className="ContactsList">{mapToComponents(this.state.contactData)}</div>
+          <ContactDetails 
+            isSelected={this.state.selectedKey != -1}
+            contact={this.state.contactData[this.state.selectedKey]}
+          />
       </div>
     );
   }
 }
+
+ContactDetails.defaultProps = {
+  contact: {
+    name: '',
+    phone: ''
+  }
+};
 
 export default Contact;

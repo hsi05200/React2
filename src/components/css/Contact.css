@@ -1,0 +1,13 @@
+.Keyword {
+	margin-bottom: 10px;
+}
+.Title {
+	margin-bottom: 10px
+}
+.ContactsList {
+  width: 162px;
+  cursor: pointer  
+}
+.ContactsList > div:hover {
+  background: #eee
+}

@@ -5,3 +5,25 @@ div {
 	color: blue;
 	font-size: 20px;
 }
+.Keyword {
+	margin-bottom: 10px;
+}
+.Title {
+	margin-bottom: 10px
+}
+.ContactsList {
+  width: 162px;
+  cursor: pointer  
+}
+.ContactsList > div:hover {
+  background: #eee
+}
+.Title a {
+  text-decoration: none;
+  color: #000;
+}
+input {
+  margin-bottom: 0;
+  position: relative;
+  top: -10px;
+}

@@ -2,7 +2,9 @@
 import React from 'react';
 //import Contact from './components/Contact';
 //import ContactInfo from './components/Contactinfo';
-import Counter from './components/Counter';
+// import Counter from './components/Counter';
+import Contact from './components/Contact.js';
+import './App.css';
 
 class App extends React.Component {
   render() {
@@ -14,9 +16,9 @@ class App extends React.Component {
 
     return (
       <div>
-        <Counter/>
+        {/* <Counter/> */}
         {/* <ContactInfo name={this.props.name} desc={this.props.desc}/> */}
-        {/* <Contact/> */}
+        <Contact/>
       </div>      
     );
   }

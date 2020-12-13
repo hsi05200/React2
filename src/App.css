@@ -11,11 +11,12 @@ div {
 .Title {
 	margin-bottom: 10px
 }
-.ContactsList {
-  width: 162px;
-  cursor: pointer  
+.ContactsList {  
+  cursor: pointer;
+  width: 235px;
+  display: flex;
 }
-.ContactsList > div:hover {
+.ContactsList:hover {
   background: #eee
 }
 .Title a {
@@ -26,4 +27,17 @@ input {
   margin-bottom: 0;
   position: relative;
   top: -10px;
+}
+.DetailsView p {
+  display: flex
+}
+.DetailsView p label {
+  width: 90px;
+  font-size:14px;
+  font-weight: 600;
+}
+.DetailsView p span {  
+  font-size:14px;
+  font-weight: 200;
+  color: #666
 }

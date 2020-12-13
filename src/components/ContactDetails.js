@@ -4,9 +4,19 @@ class ContactDetails extends React.Component {
   render() {
 
     const details = (
-      <div>
-        <p style={{marginBottom:-10}}>{this.props.contact.name}</p>
-        <p>{this.props.contact.phone}</p>
+      <div className="DetailsView">
+        <p style={{marginBottom:-10}}>
+          <label>이름</label>
+          <span>{this.props.contact.name}</span>
+        </p>
+        <p style={{marginBottom:-12}}>
+          <label>전화번호</label>
+          <span>{this.props.contact.phone}</span>
+        </p>
+        <p>
+          <label>주소</label>
+          <span>{this.props.contact.address}</span>
+        </p>
       </div>
     );
     const blank = (
@@ -17,7 +27,7 @@ class ContactDetails extends React.Component {
 
     return (
       <div style={{marginTop:10}}>
-        <h2 style={{margin:'10px 0 -5px'}}>Details</h2>
+        <h3>상세정보보기</h3>
         {this.props.isSelected
           ? details
           : blank
@@ -26,5 +36,13 @@ class ContactDetails extends React.Component {
     );
   }
 }
+
+ContactDetails.defaultProps = {
+  contact: {
+    name: '',
+    phone: '',
+    address: ''
+  }
+};
 
 export default ContactDetails;

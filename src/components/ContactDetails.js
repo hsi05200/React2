@@ -19,6 +19,7 @@ class ContactDetails extends React.Component {
         </p>
       </div>
     );
+    
     const blank = (
       <div style={{marginTop:10}}>
         수정내용을 선택하세요.

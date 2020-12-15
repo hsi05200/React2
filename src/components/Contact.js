@@ -1,6 +1,7 @@
 import React from 'react';
 import Contactinfo from './Contactinfo';
 import ContactDetails from './ContactDetails';
+import update from 'react-addons-update';
 
 class Contact extends React.Component {
 
@@ -17,8 +18,12 @@ class Contact extends React.Component {
         {name:'Eleanor', phone:'010-0000-0005', address:'통영시'}
       ]
     };
+
     this.keywordChange = this.keywordChange.bind(this);
     this.choiceChange = this.choiceChange.bind(this);
+    this.handleCreate = this.handleCreate.bind(this);
+    this.handleRemove = this.handleRemove.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
   }
 
   keywordChange(e) {
@@ -32,6 +37,37 @@ class Contact extends React.Component {
       selectedKey: key
     });
     console.log(key, '번이 선택되었습니다!');
+  }
+
+  handleCreate(contact) {
+    this.setState({
+      contactData: update(this.state.contactData,
+         {$push: [contact]}
+        )
+    });
+  }
+
+  handleRemove() {
+    this.setState({
+      contactData: update(this.state.contactData,
+        { $splice: [[this.state.selectedKey, 1]]}  
+      ), 
+      selectedKey: -1
+    });
+  }
+
+  handleEdit(name, phone, address) {
+    this.setState({
+      contactData: update(this.state.contactData, 
+        {
+          [this.state.selectedKey]: {
+            name: { $set: name},
+            phone: { $set: phone},
+            address: { $set: address}
+          }
+        }  
+      )
+    });
   }
 
   render() {  

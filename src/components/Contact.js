@@ -3,8 +3,8 @@ import Contactinfo from './Contactinfo';
 import ContactDetails from './ContactDetails';
 import update from 'react-addons-update';
 import ContatCreate from './ContactCreate';
-import ChoiceButtonColor from './ChoiceButtonColor';
-import Accordion from './Accordion';
+// import ChoiceButtonColor from './ChoiceButtonColor';
+// import Accordion from './Accordion';
 
 class Contact extends React.Component {
 
@@ -22,6 +22,23 @@ class Contact extends React.Component {
       ]
     };    
   }
+
+  // 여기코드부터 : localStorage를 이용해 현재 DB값을 새로고침하여도 유지시킴
+  componentWillMount() {
+    const contactData = localStorage.contactData;
+    if(contactData) {
+      this.setState({
+        contactData: JSON.parse(contactData)
+      });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if(JSON.stringify(prevState.contactData) !== JSON.stringify(this.state.contactData)) {
+      localStorage.contactData = JSON.stringify(this.state.contactData);
+    }
+  }
+// 여기코드까지(해당 DB값의 유지는 서버가 아닌 현재 브라우저의 저장공간에 저장됨)
 
   keywordChange = (e) => {
     this.setState({
@@ -101,7 +118,8 @@ class Contact extends React.Component {
         <ContactDetails 
             isSelected={this.state.selectedKey !== -1}
             contact={this.state.contactData[this.state.selectedKey]}
-            onRemove={ () => this.handleRemove() }
+            onRemove = { () => this.handleRemove() }
+            onEdit = { (name, phone, address) => this.handleEdit(name, phone, address) }
             />
         <ContatCreate onCreate={(contact) => this.handleCreate(contact)}/>
         {/* <ChoiceButtonColor/>

@@ -31,19 +31,28 @@ class ContactCreate extends React.Component {
       phone: '',
       address: ''
     });
+    this.nameInput.focus();
   }
+
+  handleKeyPress = (e) => {
+    if(e.charCode === 13) {
+      this.handleClick();
+    };
+  }  
 
   render() {
     return (
       <div>
         <h2>Contact 추가</h2>
-        <p className="CreateForm">
+        <div className="CreateForm">
           <input 
             type="text"
             name="name"
-            placeholder="이름"
+            placeholder="이름"            
             value={this.state.name}
-            onChange={ (e) => this.handleChange(e) }
+            onChange = { (e) => this.handleChange(e) }
+            onKeyPress = { (e) => this.handleKeyPress(e) }
+            ref = {(ref) => {this.nameInput = ref}}
           /><br/>
 
           <input 
@@ -52,6 +61,7 @@ class ContactCreate extends React.Component {
             placeholder="전화번호"
             value={this.state.phone}
             onChange={ (e) => this.handleChange(e) }
+            onKeyPress={ (e) => this.handleKeyPress(e) }
             /><br/>
 
           <input 
@@ -60,8 +70,9 @@ class ContactCreate extends React.Component {
             placeholder="주소"
             value={this.state.address}
             onChange={ (e) => this.handleChange(e) }
+            onKeyPress={ (e) => this.handleKeyPress(e) }
             />
-        </p>
+        </div>
         <button onClick={() => this.handleClick()}>추가 +</button>
       </div>
     )

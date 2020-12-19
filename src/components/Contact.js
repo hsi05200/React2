@@ -2,6 +2,9 @@ import React from 'react';
 import Contactinfo from './Contactinfo';
 import ContactDetails from './ContactDetails';
 import update from 'react-addons-update';
+import ContatCreate from './ContactCreate';
+import ChoiceButtonColor from './ChoiceButtonColor';
+import Accordion from './Accordion';
 
 class Contact extends React.Component {
 
@@ -17,53 +20,47 @@ class Contact extends React.Component {
         {name:'David', phone:'010-0000-0004', address:'거제시'},
         {name:'Eleanor', phone:'010-0000-0005', address:'통영시'}
       ]
-    };
-
-    this.keywordChange = this.keywordChange.bind(this);
-    this.choiceChange = this.choiceChange.bind(this);
-    this.handleCreate = this.handleCreate.bind(this);
-    this.handleRemove = this.handleRemove.bind(this);
-    this.handleEdit = this.handleEdit.bind(this);
+    };    
   }
 
-  keywordChange(e) {
+  keywordChange = (e) => {
     this.setState({
       keyword:e.target.value
     });
   }
   
-  choiceChange(key) {
+  choiceChange = (key) => {
     this.setState({
       selectedKey: key
     });
     console.log(key, '번이 선택되었습니다!');
   }
 
-  handleCreate(contact) {
+  handleCreate = (contact) => {
     this.setState({
-      contactData: update(this.state.contactData,
-         {$push: [contact]}
-        )
+      contactData: update(this.state.contactData, {$push: [contact]})
     });
   }
 
-  handleRemove() {
+  handleRemove = () => {
+    if(this.state.selectedKey < 0) {
+      return;
+    }
     this.setState({
-      contactData: update(this.state.contactData,
-        { $splice: [[this.state.selectedKey, 1]]}  
-      ), 
-      selectedKey: -1
+      contactData: update( this.state.contactData,
+        {$splice: [[this.state.selectedKey, 1]]} ),
+        selectedKey: -1
     });
   }
 
-  handleEdit(name, phone, address) {
+  handleEdit = (name, phone, address) => {
     this.setState({
       contactData: update(this.state.contactData, 
         {
           [this.state.selectedKey]: {
-            name: { $set: name},
-            phone: { $set: phone},
-            address: { $set: address}
+            name: { $set: name },
+            phone: { $set: phone },
+            address: { $set: address }
           }
         }  
       )
@@ -102,9 +99,13 @@ class Contact extends React.Component {
         />
         <div>{mapToComponent(this.state.contactData)}</div>    
         <ContactDetails 
-            isSelected={this.state.selectedKey != -1}
+            isSelected={this.state.selectedKey !== -1}
             contact={this.state.contactData[this.state.selectedKey]}
-        />
+            onRemove={ () => this.handleRemove() }
+            />
+        <ContatCreate onCreate={(contact) => this.handleCreate(contact)}/>
+        {/* <ChoiceButtonColor/>
+        <Accordion/>*/}
       </div>
     );
   };

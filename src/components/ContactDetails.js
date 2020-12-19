@@ -21,7 +21,7 @@ class ContactDetails extends React.Component {
     );
     
     const blank = (
-      <div style={{marginTop:10}}>
+      <div style={{margin:'10px 0 5px'}}>
         수정내용을 선택하세요.
       </div>
     );
@@ -29,10 +29,9 @@ class ContactDetails extends React.Component {
     return (
       <div style={{marginTop:10}}>
         <h3>상세정보보기</h3>
-        {this.props.isSelected
-          ? details
-          : blank
-        }
+        {this.props.isSelected ? details : blank}
+        <button style={{marginRight:5}}>수정</button>
+        <button onClick={() => this.props.onRemove()}>삭제</button>        
       </div> 
     );
   }
@@ -43,7 +42,8 @@ ContactDetails.defaultProps = {
     name: '',
     phone: '',
     address: ''
-  }
+  },
+  onRemove: () => { console.error('입력된 값이 없습니다.'); }
 };
 
 export default ContactDetails;

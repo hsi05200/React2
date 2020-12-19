@@ -1,3 +1,7 @@
+*{
+  outline: none;
+  box-shadow: none;
+}
 div {
 	padding: 0px;
 }
@@ -12,8 +16,7 @@ div {
 	margin-bottom: 10px
 }
 .ContactsList {  
-  cursor: pointer;
-  width: 235px;
+  cursor: pointer;  
   display: flex;
 }
 .ContactsList:hover {
@@ -40,4 +43,63 @@ input {
   font-size:14px;
   font-weight: 200;
   color: #666
+}
+.CreateForm input {
+  margin-bottom: 5px
+}
+
+.ClickBtn {
+  background-color: #fff;
+  border: 1px solid #000;
+  color: #000;
+  margin-right: 5px;
+  cursor: pointer;
+  font-size:14px;
+  padding: 3px;
+}
+.ClickBtnOn {
+  background-color: rgb(255, 2, 129);
+  border: 1px solid #000;
+  color: #000;
+  margin-right: 5px;
+  cursor: pointer;
+  color: white;
+  font-size:14px;
+  padding: 3px;
+}
+
+.accordion {
+  padding-top: 50px;
+  width: 450px;  
+  margin: auto;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+  max-height: 40px;
+  padding: 0 15px;
+  margin-bottom: -8px;
+}
+.container div {
+  cursor: pointer;
+  z-index: 1000;
+}
+.accordionHeader {
+  background-color: #999;
+}
+.accordionContent {
+  height: 0;
+  opacity: 0;  
+  transition: all 600ms ease-in-out;  
+}
+.accordionContentOn {
+  height: 180px;
+  opacity: 1.0;
+  transition: all 600ms ease-in-out;
+  z-index: -1;
+}
+button {
+  cursor: pointer;
 }

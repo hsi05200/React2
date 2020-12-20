@@ -18,7 +18,7 @@ class App extends React.Component {
       <div>
         {/* <Counter/> */}
         {/* <ContactInfo name={this.props.name} desc={this.props.desc}/> */}
-        <Contact/>
+        <Contact/>        
       </div>      
     );
   }

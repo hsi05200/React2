@@ -1,4 +1,6 @@
 import React from 'react';
+// import { Card } from 'react-bootstrap';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Accordion extends React.Component {
 
@@ -53,6 +55,7 @@ class Accordion extends React.Component {
   }
 
   render() {
+    
     return (
       <div className="accordion">
         <div className="accordionHeader">
@@ -102,7 +105,7 @@ class Accordion extends React.Component {
         <div className={this.state.ContentName4}>
           <p>질문4에 대한 답변4의 내용입니다.</p>
         </div>
-      </div>
+      </div>      
     )
   }
 }

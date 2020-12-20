@@ -4,7 +4,8 @@ import ContactDetails from './ContactDetails';
 import update from 'react-addons-update';
 import ContatCreate from './ContactCreate';
 // import ChoiceButtonColor from './ChoiceButtonColor';
-// import Accordion from './Accordion';
+//import Accordion from './Accordion';
+import { Container } from "react-bootstrap";
 
 class Contact extends React.Component {
 
@@ -120,10 +121,11 @@ class Contact extends React.Component {
             contact={this.state.contactData[this.state.selectedKey]}
             onRemove = { () => this.handleRemove() }
             onEdit = { (name, phone, address) => this.handleEdit(name, phone, address) }
-            />
+        />
         <ContatCreate onCreate={(contact) => this.handleCreate(contact)}/>
-        {/* <ChoiceButtonColor/>
-        <Accordion/>*/}
+        {/* <ChoiceButtonColor/>*/}
+        {/* <Accordion/> */}
+        <Container>bootstrap</Container>
       </div>
     );
   };
